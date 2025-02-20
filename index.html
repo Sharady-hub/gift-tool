@@ -3,56 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gift Finder - Find the Perfect Gift</title>
+    <title>Gift Finder - Perfect Gifts for Any Occasion</title>
+    <meta name="description" content="Find the perfect gift ideas for friends, family, and more with our free Gift Finder tool. Set your budget and get personalized suggestions with easy shopping links!">
+    <meta name="keywords" content="gift ideas, gift finder, personalized gifts, affordable gifts, holiday gifts">
+    <meta property="og:title" content="Gift Finder - Perfect Gifts for Any Occasion">
+    <meta property="og:description" content="Discover the best gift ideas for any budget and recipient with our free tool. Shop now and save!">
+    <meta property="og:url" content="https://sharady-hub.github.io/gift-tool/">
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: #f5f5f5;
+            margin: 0;
         }
         h1 {
-            color: #333;
+            color: #2c3e50;
+            margin-bottom: 20px;
         }
         form {
             background: white;
             padding: 20px;
             border-radius: 10px;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
         label, select, button {
             display: block;
             width: 80%;
-            margin: 10px auto;
+            margin: 15px auto;
         }
         select, button {
-            padding: 10px;
+            padding: 12px;
             font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
         button {
-            background-color: #4CAF50;
+            background-color: #3498db;
             color: white;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #2980b9;
         }
         #results {
             margin-top: 20px;
             text-align: left;
-            max-width: 500px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            padding: 15px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #results p {
+            margin: 10px 0;
+            font-size: 16px;
         }
         #results a {
-            color: #0066cc;
+            color: #e74c3c;
             text-decoration: none;
+            font-weight: bold;
         }
         #results a:hover {
             text-decoration: underline;
+        }
+        .share-buttons {
+            margin-top: 20px;
+        }
+        .share-buttons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+        .share-buttons a:hover {
+            color: #2980b9;
         }
     </style>
 </head>
@@ -65,6 +96,8 @@
             <option value="parent">Parent</option>
             <option value="kid">Kid</option>
             <option value="partner">Partner</option>
+            <option value="sibling">Sibling</option>
+            <option value="teacher">Teacher</option>
         </select>
 
         <label for="budget">What’s your budget?</label>
@@ -72,12 +105,18 @@
             <option value="under25">Under $25</option>
             <option value="25to50">$25 - $50</option>
             <option value="50to100">$50 - $100</option>
+            <option value="over100">Over $100</option>
         </select>
 
-        <button type="submit">Find Gifts</button>
+        <button type="submit">Find Perfect Gifts</button>
     </form>
 
     <div id="results"></div>
+    <div class="share-buttons">
+        <p>Love this tool? Share it!</p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://sharady-hub.github.io/gift-tool/" target="_blank">Share on Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=https://sharady-hub.github.io/gift-tool/&text=Find%20the%20perfect%20gift%20with%20this%20free%20tool!" target="_blank">Share on Twitter</a>
+    </div>
 
     <script>
         document.getElementById('giftForm').addEventListener('submit', function(e) {
@@ -86,29 +125,39 @@
             const budget = document.getElementById('budget').value;
             let suggestions = '';
 
-            // Gift suggestions with placeholder Amazon affiliate links
+            // Expanded gift suggestions with placeholder Amazon affiliate links
             if (recipient === 'friend' && budget === 'under25') {
                 suggestions = `
-                    <p>1. A cool coffee mug - <a href="https://amzn.to/placeholder1" target="_blank">Buy Now</a></p>
-                    <p>2. Fun socks - <a href="https://amzn.to/placeholder2" target="_blank">Buy Now</a></p>
+                    <p>1. Fun coffee mug - Great for any coffee lover! <a href="https://amzn.to/placeholder1" target="_blank">Buy Now</a></p>
+                    <p>2. Quirky socks - Add a smile to their day! <a href="https://amzn.to/placeholder2" target="_blank">Buy Now</a></p>
                 `;
             } else if (recipient === 'parent' && budget === '25to50') {
                 suggestions = `
-                    <p>1. Cozy blanket - <a href="https://amzn.to/placeholder3" target="_blank">Buy Now</a></p>
-                    <p>2. Gardening kit - <a href="https://amzn.to/placeholder4" target="_blank">Buy Now</a></p>
+                    <p>1. Cozy blanket - Perfect for relaxation! <a href="https://amzn.to/placeholder3" target="_blank">Buy Now</a></p>
+                    <p>2. Gardening tool set - Ideal for green thumbs! <a href="https://amzn.to/placeholder4" target="_blank">Buy Now</a></p>
                 `;
             } else if (recipient === 'kid' && budget === '50to100') {
                 suggestions = `
-                    <p>1. LEGO set - <a href="https://amzn.to/placeholder5" target="_blank">Buy Now</a></p>
-                    <p>2. Remote control car - <a href="https://amzn.to/placeholder6" target="_blank">Buy Now</a></p>
+                    <p>1. LEGO set - Hours of creative fun! <a href="https://amzn.to/placeholder5" target="_blank">Buy Now</a></p>
+                    <p>2. Board game - Family fun guaranteed! <a href="https://amzn.to/placeholder6" target="_blank">Buy Now</a></p>
                 `;
-            } else if (recipient === 'partner' && budget === 'under25') {
+            } else if (recipient === 'partner' && budget === 'over100') {
                 suggestions = `
-                    <p>1. Personalized keychain - <a href="https://amzn.to/placeholder7" target="_blank">Buy Now</a></p>
-                    <p>2. Scented candle - <a href="https://amzn.to/placeholder8" target="_blank">Buy Now</a></p>
+                    <p>1. Luxury watch - A timeless gift! <a href="https://amzn.to/placeholder7" target="_blank">Buy Now</a></p>
+                    <p>2. Romantic getaway voucher - Unforgettable memories! <a href="https://amzn.to/placeholder8" target="_blank">Buy Now</a></p>
+                `;
+            } else if (recipient === 'sibling' && budget === 'under25') {
+                suggestions = `
+                    <p>1. Keychain with message - A thoughtful touch! <a href="https://amzn.to/placeholder9" target="_blank">Buy Now</a></p>
+                    <p>2. Funny greeting card - Perfect for laughs! <a href="https://amzn.to/placeholder10" target="_blank">Buy Now</a></p>
+                `;
+            } else if (recipient === 'teacher' && budget === '25to50') {
+                suggestions = `
+                    <p>1. Teacher planner - Stay organized in style! <a href="https://amzn.to/placeholder11" target="_blank">Buy Now</a></p>
+                    <p>2. Inspirational book - A gift for the mind! <a href="https://amzn.to/placeholder12" target="_blank">Buy Now</a></p>
                 `;
             } else {
-                suggestions = `<p>Try different options for more suggestions!</p>`;
+                suggestions = `<p>Try different options for more personalized gift ideas!</p>`;
             }
 
             document.getElementById('results').innerHTML = suggestions;
