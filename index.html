@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Finder - Find the Perfect Gift</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label, select, button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #results {
+            margin-top: 20px;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #results a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        #results a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gift Finder</h1>
+    <form id="giftForm">
+        <label for="recipient">Who’s the gift for?</label>
+        <select id="recipient" name="recipient">
+            <option value="friend">Friend</option>
+            <option value="parent">Parent</option>
+            <option value="kid">Kid</option>
+            <option value="partner">Partner</option>
+        </select>
+
+        <label for="budget">What’s your budget?</label>
+        <select id="budget" name="budget">
+            <option value="under25">Under $25</option>
+            <option value="25to50">$25 - $50</option>
+            <option value="50to100">$50 - $100</option>
+        </select>
+
+        <button type="submit">Find Gifts</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('giftForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const recipient = document.getElementById('recipient').value;
+            const budget = document.getElementById('budget').value;
+            let suggestions = '';
+
+            // Gift suggestions with placeholder Amazon affiliate links
+            if (recipient === 'friend' && budget === 'under25') {
+                suggestions = `
+                    <p>1. A cool coffee mug - <a href="https://amzn.to/placeholder1" target="_blank">Buy Now</a></p>
+                    <p>2. Fun socks - <a href="https://amzn.to/placeholder2" target="_blank">Buy Now</a></p>
+                `;
+            } else if (recipient === 'parent' && budget === '25to50') {
+                suggestions = `
+                    <p>1. Cozy blanket - <a href="https://amzn.to/placeholder3" target="_blank">Buy Now</a></p>
+                    <p>2. Gardening kit - <a href="https://amzn.to/placeholder4" target="_blank">Buy Now</a></p>
+                `;
+            } else if (recipient === 'kid' && budget === '50to100') {
+                suggestions = `
+                    <p>1. LEGO set - <a href="https://amzn.to/placeholder5" target="_blank">Buy Now</a></p>
+                    <p>2. Remote control car - <a href="https://amzn.to/placeholder6" target="_blank">Buy Now</a></p>
+                `;
+            } else if (recipient === 'partner' && budget === 'under25') {
+                suggestions = `
+                    <p>1. Personalized keychain - <a href="https://amzn.to/placeholder7" target="_blank">Buy Now</a></p>
+                    <p>2. Scented candle - <a href="https://amzn.to/placeholder8" target="_blank">Buy Now</a></p>
+                `;
+            } else {
+                suggestions = `<p>Try different options for more suggestions!</p>`;
+            }
+
+            document.getElementById('results').innerHTML = suggestions;
+        });
+    </script>
+</body>
+</html>
