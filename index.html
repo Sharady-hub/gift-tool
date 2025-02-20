@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift Finder - Perfect Gifts for Any Occasion</title>
-    <meta name="description" content="Find the perfect gift ideas for friends, family, and more with our free Gift Finder tool. Set your budget and get personalized suggestions with easy shopping links!">
+    <meta name="description" content="Find the perfect gift ideas for friends, family, and more with our free Gift Finder tool. Get personalized suggestions with easy shopping links!">
     <meta name="keywords" content="gift ideas, gift finder, personalized gifts, affordable gifts, holiday gifts">
     <meta property="og:title" content="Gift Finder - Perfect Gifts for Any Occasion">
-    <meta property="og:description" content="Discover the best gift ideas for any budget and recipient with our free tool. Shop now and save!">
+    <meta property="og:description" content="Discover the best gift ideas for any recipient with our free tool. Shop now and save!">
     <meta property="og:url" content="https://sharady-hub.github.io/gift-tool/">
     <style>
         body {
@@ -100,14 +100,6 @@
             <option value="teacher">Teacher</option>
         </select>
 
-        <label for="budget">What’s your budget?</label>
-        <select id="budget" name="budget">
-            <option value="under25">Under $25</option>
-            <option value="25to50">$25 - $50</option>
-            <option value="50to100">$50 - $100</option>
-            <option value="over100">Over $100</option>
-        </select>
-
         <button type="submit">Find Perfect Gifts</button>
     </form>
 
@@ -122,42 +114,41 @@
         document.getElementById('giftForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const recipient = document.getElementById('recipient').value;
-            const budget = document.getElementById('budget').value;
             let suggestions = '';
 
-            // Gift suggestions with your Amazon affiliate links
-            if (recipient === 'friend' && budget === 'under25') {
+            // All gift suggestions for each recipient, using your Amazon affiliate links
+            if (recipient === 'friend') {
                 suggestions = `
                     <p>1. Fun coffee mug - Great for any coffee lover! <a href="https://amzn.to/3Db6CIm" target="_blank">Buy Now</a></p>
                     <p>2. Quirky socks - Add a smile to their day! <a href="https://amzn.to/3Xa36oC" target="_blank">Buy Now</a></p>
                 `;
-            } else if (recipient === 'parent' && budget === '25to50') {
+            } else if (recipient === 'parent') {
                 suggestions = `
                     <p>1. Cozy blanket - Perfect for relaxation! <a href="https://amzn.to/3X7OG8k" target="_blank">Buy Now</a></p>
                     <p>2. Gardening tool set - Ideal for green thumbs! <a href="https://amzn.to/4bcDxcb" target="_blank">Buy Now</a></p>
                 `;
-            } else if (recipient === 'kid' && budget === '50to100') {
+            } else if (recipient === 'kid') {
                 suggestions = `
                     <p>1. LEGO set - Hours of creative fun! <a href="https://amzn.to/4bb0nBe" target="_blank">Buy Now</a></p>
                     <p>2. Board game - Family fun guaranteed! <a href="https://amzn.to/4khClsm" target="_blank">Buy Now</a></p>
                 `;
-            } else if (recipient === 'partner' && budget === 'over100') {
+            } else if (recipient === 'partner') {
                 suggestions = `
                     <p>1. Luxury watch - A timeless gift! <a href="https://amzn.to/3CZP81O" target="_blank">Buy Now</a></p>
                     <p>2. Romantic getaway voucher - Unforgettable memories! <a href="https://amzn.to/433k3Vn" target="_blank">Buy Now</a></p>
                 `;
-            } else if (recipient === 'sibling' && budget === 'under25') {
+            } else if (recipient === 'sibling') {
                 suggestions = `
                     <p>1. Keychain with message - A thoughtful touch! <a href="https://amzn.to/431skJu" target="_blank">Buy Now</a></p>
                     <p>2. Funny greeting card - Perfect for laughs! <a href="https://amzn.to/4i8J7ih" target="_blank">Buy Now</a></p>
                 `;
-            } else if (recipient === 'teacher' && budget === '25to50') {
+            } else if (recipient === 'teacher') {
                 suggestions = `
                     <p>1. Teacher planner - Stay organized in style! <a href="https://amzn.to/433kcYV" target="_blank">Buy Now</a></p>
                     <p>2. Inspirational book - A gift for the mind! <a href="https://amzn.to/43357ql" target="_blank">Buy Now</a></p>
                 `;
             } else {
-                suggestions = `<p>Try different options for more personalized gift ideas!</p>`;
+                suggestions = `<p>Please select a recipient to see gift ideas!</p>`;
             }
 
             document.getElementById('results').innerHTML = suggestions;
